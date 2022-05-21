@@ -1,28 +1,54 @@
-import { FiSearch } from "react-icons/fi";
-import './App.css';
+import { useState } from 'react';
+
+import { FiSearch } from 'react-icons/fi'
+import api from './services/api';
+import "./App.css"
 
 function App() {
 
+  const[input, setInput] = useState('');
+  const [cep, setCep] = useState({});
+
+  async function handleSearch(){
+    if(input === ''){
+      alert("Preencha com algum cep");
+        return; 
+    }
+
+    try {
+      const response = await api.get(`${input}/json`);
+      setCep(response.data)
+    }catch{
+      alert("Ops erro ao buscar");
+      setInput("")
+    }
+  }
+
   return (
     <div className="container">
-      <h1 className="title">Buscador de CEP</h1>
-
+      <h1 className="title">Buscador CEP</h1>
       <div className="container-input">
-        <input type="text" placeholder="Digite seu CEP..."/>
-        
-        <button className="button-search"> <FiSearch size={25} color="#000"/> </button>
+        <input type="text" placeholder="Digite o CEP..."
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        />
+      
+      <button className="button-search" onClick={handleSearch}>
+        <FiSearch size={25} color="#000"/>
+      </button>
       </div>
 
-      <main className="main">
-        <h2>CEP: 638000000</h2>
-
-        <span>Rua teste algum</span>
-        <span>Complemento: Algum complemento</span>
-        <span>Vila Rosa</span>
-        <span>Quixeramobim-CE</span>
+    {Object.keys(cep).length > 0 && (
+            <main className='main'>
+        <h2>CEP: {cep.cep}</h2>
+        <span>{cep.logradouro}</span>
+        <span> {(cep.complemento).length > 0 ? Complemento : ""} {cep.complemento}</span>
+        <span>{cep.bairro}</span>
+        <span>{cep.localidade} - {cep.uf}</span>
       </main>
+    )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

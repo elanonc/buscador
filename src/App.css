@@ -33,7 +33,7 @@
 .container-input input {
   border: none;
   font-size: 1.25rem;
-  color: #FFF;
+  color: #000;
   outline: none;
   margin-right: 0.5rem;
 }
@@ -68,6 +68,7 @@
   background-color: #FFF;
   width: 31.25rem;
   border-radius: 0.5px;
+  padding-block: 1rem;
 } 
 
 .main h2 {
