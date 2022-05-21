@@ -1,42 +1,100 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.title {
+  font-size: 5.31rem;
+  color: #FFF;
+  animation: slide-right 2s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/*Container - Input*/
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  flex-direction: column;
+  background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
 }
 
-.App-link {
-  color: #61dafb;
+.container-input {
+  background-color: #FFF;
+  padding: 1rem;
+  margin: 2.1rem;
+  display: flex;
+  border-radius: 0.5rem;
+  box-shadow: 0.0625rem 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.container-input input {
+  border: none;
+  font-size: 1.25rem;
+  color: #FFF;
+  outline: none;
+  margin-right: 0.5rem;
+}
+
+.container-input input::placeholder {
+  color: #000;
+}
+
+/*Button*/
+
+.button-search {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+
+.button-search:hover {
+  transform: scale(1.2);
+}
+
+/*Main*/
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #FFF;
+  width: 31.25rem;
+  border-radius: 0.5px;
+} 
+
+.main h2 {
+  margin: 1rem 0;
+  font-size: 2.5rem;
+}
+
+.main span {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+@media (max-width: 38.75rem) {
+  .title {
+    font-size: 3rem;
+  } 
+
+  .container-input input {
+    font-size: 1rem;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-button {
-  font-size: calc(10px + 2vmin);
+  .main {
+    width: 80%;
+    min-height: 15.65rem;
+  }
+
+  .main h2 {
+    font-size: 2rem;
+  }
 }
